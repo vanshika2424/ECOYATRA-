@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECOयात्रा - Route Planner</title>
+    <link rel="icon" type="image/webp" href="{{ url_for('static', filename='images/ecoyatralogo.webp') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="language-toggle">
+                <span class="lang-label">EN</span>
+                <label class="switch">
+                    <input type="checkbox" id="languageToggle">
+                    <span class="slider round"></span>
+                </label>
+                <span class="lang-label">हिंदी</span>
+            </div>
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/ecoyatralogo.webp') }}" alt="ECOयात्रा Logo" class="logo"><h1>ECOयात्रा</h1>
+            </div>
+            <p data-en="Sustainable Journey Planning System" data-hi="सतत यात्रा नियोजन प्रणाली">Sustainable Journey Planning System</p>
+        </header>
+
+        <div class="main-content">
+            <div class="input-section">
+                <form id="routeForm" class="card">
+                    <div class="form-group">
+                        <label for="start"><i class="fas fa-map-marker-alt"></i> <span data-en="Start Location" data-hi="प्रारंभ स्थान">Start Location</span>:</label>
+                        <input type="text" id="start" name="start" required placeholder="Enter starting point" data-placeholder-en="Enter starting point" data-placeholder-hi="प्रारंभ स्थान दर्ज करें">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="destination"><i class="fas fa-flag-checkered"></i> <span data-en="Destination" data-hi="गंतव्य">Destination</span>:</label>
+                        <input type="text" id="destination" name="destination" required placeholder="Enter destination" data-placeholder-en="Enter destination" data-placeholder-hi="गंतव्य दर्ज करें">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="vehicleType"><i class="fas fa-car"></i> <span data-en="Vehicle Type" data-hi="वाहन का प्रकार">Vehicle Type</span>:</label>
+                        <select id="vehicleType" name="vehicleType" required>
+                            <option value="" disabled selected data-en="Select your vehicle type" data-hi="अपने वाहन का प्रकार चुनें">Select your vehicle type</option>
+                            <option value="two_wheeler" data-en="Two Wheeler" data-hi="दोपहिया वाहन">Two Wheeler</option>
+                            <option value="three_wheeler" data-en="Three Wheeler" data-hi="तिपहिया वाहन">Three Wheeler</option>
+                            <option value="car" data-en="Car" data-hi="कार">Car</option>
+                            <option value="bus" data-en="Bus" data-hi="बस">Bus</option>
+                            <option value="freight_vehicle" data-en="Freight Vehicle" data-hi="मालवाहक वाहन">Freight Vehicle</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="vehicleDetailsContainer">
+                        <!-- Dynamic vehicle details inputs will be added here -->
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="primary-btn">
+                            <i class="fas fa-route"></i> <span data-en="Calculate Route" data-hi="मार्ग की गणना करें">Calculate Route</span>
+                        </button>
+                        <button type="button" id="monitorButton" class="secondary-btn">
+                            <i class="fas fa-chart-line"></i> <span data-en="Monitor" data-hi="निगरानी">Monitor</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="map-container card">
+                <div id="map"></div>
+            </div>
+
+            <div class="info-panel">
+                <div class="route-info card">
+                    <h3><i class="fas fa-info-circle"></i> <span data-en="Route Information" data-hi="मार्ग की जानकारी">Route Information</span></h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label" data-en="Distance" data-hi="दूरी">Distance:</span>
+                            <span id="distance" class="info-value">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label" data-en="Duration" data-hi="अवधि">Duration:</span>
+                            <span id="duration" class="info-value">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label" data-en="Emissions" data-hi="उत्सर्जन">Emissions:</span>
+                            <span id="emissions" class="info-value">- kg CO2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="conditions card">
+                    <h3><i class="fas fa-cloud-sun"></i> <span data-en="Current Conditions" data-hi="वर्तमान स्थिति">Current Conditions</span></h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label" data-en="Traffic" data-hi="यातायात">Traffic:</span>
+                            <span id="traffic" class="info-value">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label" data-en="Air Quality" data-hi="वायु गुणवत्ता">Air Quality:</span>
+                            <span id="airQuality" class="info-value">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label" data-en="Weather" data-hi="मौसम">Weather:</span>
+                            <span id="weather" class="info-value">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
