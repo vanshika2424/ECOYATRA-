@@ -1,21 +1,23 @@
-# **ECOयात्रा** - Eco-friendly Route Planning System 🌍
+# **ECOयात्रा** - Eco-friendly Route Planning System 
+
+Website: https://ecoyatra-1.onrender.com
 
 An intelligent and sustainable route planning system that prioritizes environmental considerations and real-time traffic conditions to suggest the most eco-friendly routes.
 
 ---
 
-## **✨ Features**
-- 🚗 **Route Calculation**: Generates routes with multiple eco-friendly alternatives.  
-- 🌐 **Real-time Traffic Monitoring**: Keeps you informed about current traffic conditions.  
-- 🌫 **Air Quality Monitoring**: Provides air quality data along your route.  
-- ☀️ **Weather Information**: Displays weather conditions for your journey.  
-- 🌱 **CO₂ Emissions Calculation**: Estimates emissions based on your vehicle type.  
-- 🚙 **Vehicle-specific Routing**: Tailors routes based on your vehicle’s specifications.  
-- 🔄 **Dynamic Rerouting**: Suggests new routes when conditions change.  
+## **Features**
+- **Route Calculation**: Generates routes with multiple eco-friendly alternatives.  
+- **Real-time Traffic Monitoring**: Keeps you informed about current traffic conditions.  
+- **Air Quality Monitoring**: Provides air quality data along your route.  
+- **Weather Information**: Displays weather conditions for your journey.  
+- **CO₂ Emissions Calculation**: Estimates emissions based on your vehicle type.  
+- **Vehicle-specific Routing**: Tailors routes based on your vehicle’s specifications.  
+- **Dynamic Rerouting**: Suggests new routes when conditions change.  
 
 ---
 
-## **🛠️ Technologies Used**
+## **Technologies Used**
 - **Backend**: Python (Flask)  
 - **Frontend**: JavaScript (Leaflet.js for interactive mapping)  
 - **APIs**:  
@@ -25,7 +27,7 @@ An intelligent and sustainable route planning system that prioritizes environmen
 
 ---
 
-## **📂 Project Structure**
+## **Project Structure**
 
 ```
 eco_gps/
@@ -42,7 +44,7 @@ eco_gps/
 
 ---
 
-## **🚀 Setup Instructions**
+## **Setup Instructions**
 
 ### 1️⃣ Clone the Repository  
 Clone the project repository to your local machine:  
@@ -79,7 +81,7 @@ http://127.0.0.1:5000
 
 ---
 
-## **💡 Usage**
+## **Usage**
 1. Enter your **start** and **destination** locations.  
 2. View routes with:  
    - Real-time traffic updates  
@@ -89,13 +91,15 @@ http://127.0.0.1:5000
 
 ---
 
-## **🎨 Screenshots**
-<img width="1429" height="825" alt="image" src="https://github.com/user-attachments/assets/206b8991-a352-410a-b4f7-a3af46310126" />
+## Future Work
+- Add user authentication and saved trip history
+- Integrate EV charging station data
+- Expand route optimization to include metro/bike-sharing
+- Build mobile app version (React Native)
+- Build an interactive chatbot 
 
+## Screenshots
+![ECOयात्रा Screenshot](assets/modernui.jpeg)
 
 ---
-
-
-
-
 
