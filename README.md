@@ -90,7 +90,8 @@ http://127.0.0.1:5000
 ---
 
 ## **🎨 Screenshots**
-![ECOयात्रा Screenshot](assets/eco-yatra.png)
+<img width="1429" height="825" alt="image" src="https://github.com/user-attachments/assets/206b8991-a352-410a-b4f7-a3af46310126" />
+
 
 ---
 
