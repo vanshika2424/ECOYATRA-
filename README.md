@@ -49,7 +49,7 @@ eco_gps/
 ### 1️⃣ Clone the Repository  
 Clone the project repository to your local machine:  
 ```bash
-git clone https://github.com/arushree16/eco_gps.git
+git clone https://github.com/vanshika2424/eco_gps.git
 cd eco_gps
 ```
 
